@@ -4,7 +4,7 @@ const port = 3000;
 const path = require("path");
 
 app.set("view engine", "ejs");
-app.use(express.static("/public"));
+app.use(express.static('styles'));
 
 
 app.get("/", (req, res) => {
