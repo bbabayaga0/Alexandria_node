@@ -1,0 +1,28 @@
+*{
+    font: 18px K2D;
+    background-color: #E0E1E9;
+}
+a { 
+    text-decoration: none;
+    color: black;
+    border: 1px solid #E0E1E9 ;
+}
+a:hover{
+    color: #AB87FF ;
+}
+#block_Reg_Auth{
+    border: 1px solid #E0E1E9;
+    width: 1530px;
+    height: 460px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 300px;
+    
+}
+input{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    word-wrap: break-word;
+    margin: 5px;
+    size: 1px;
+}

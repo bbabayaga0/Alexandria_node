@@ -1,0 +1,42 @@
+*{
+    font: 18px K2D;
+    background-color: #E0E1E9;
+}
+a { 
+    text-decoration: none;
+    color: black;
+    border: 1px solid #E0E1E9 ;
+}
+a:hover{
+    color: #AB87FF ;
+}
+#main_menu{
+    text-align: center;
+    word-spacing: 22px;
+
+}
+h1,p{
+    text-align: center;
+}
+#main_div_page1{
+    border: 1px solid black;
+    width: 1520px;
+    height: 580px;
+}
+#bottom_div_page1{
+    border: 1px solid black;
+    width: 1520px;
+    height: 39px;
+}
+#logotip{
+    width: 100px;
+    height: 50px;
+}
+#button_reg_auth{
+    margin-left: 1300px;
+}
+#main_logo{
+    width: 100px;
+    height: 100px;
+    background-color: #E0E1E9;
+}

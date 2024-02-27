@@ -1,0 +1,61 @@
+*{
+    font: 18px K2D;
+    background-color: #E0E1E9;
+}
+a { 
+    text-decoration: none;
+    color: black;
+    border: 1px solid #E0E1E9 ;
+}
+a:hover{
+    color: #AB87FF ;
+}
+#main_menu{
+    text-align: center;
+    word-spacing: 22px;
+
+}
+#personalOFF_div_page{
+    border: 1px solid #E0E1E9;
+    width: 1520px;
+    height: 580px;
+}
+#bottom_div_page{
+    border: 1px solid black;
+    width: 1520px;
+    height: 39px;
+    word-spacing: 3px;
+    text-align: center;
+}
+#logotip{
+    width: 100px;
+    height: 50px;
+}
+#button_reg_auth{
+    margin-left: 1300px;
+}
+#update_user_password{
+    border: 1px solid #E0E1E9;
+    width: 300px;
+    height: 300px;
+    margin-left: 50px;
+    margin-top: 80px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+#user_reviews{
+    border: 1px solid #E0E1E9;
+    width: 300px;
+    height: 300px;  
+    margin-left: 1100px;
+    margin-top: -313px;
+    text-align: center;
+    align-items: center;
+}
+input{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    word-wrap: break-word;
+    
+}
