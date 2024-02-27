@@ -4,7 +4,7 @@ const port = 3000;
 const path = require("path");
 
 app.set("view engine", "ejs");
-app.use(express.static('styles'));
+app.use(express.static('public'));
 
 
 app.get("/", (req, res) => {
@@ -24,6 +24,6 @@ app.get("/my_product", (req, res) => {
     res.send("В процессе верстки")
 });
 
-app.get("/reg_auth", (req, res) => {
-    res.redirect("public/registration_auth.html")
-})
+// app.get("/registration", (req, res) => {
+//     res.render("/registration_auth")
+// })
