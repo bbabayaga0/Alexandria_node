@@ -12,18 +12,18 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, ()=>{
-    console.log(`Твой сервак запущен тут http://localhost:${port}, только тихо))`)
+    console.log(`Твой сервак запущен тут http:localhost:${port}, только тихо))`)
 });
 
 
 app.get("/about", (req,res) =>{
     res.send("О нас вы тут инфы не найдете")
-})
+});
 
 app.get("/my_product", (req, res) => {
     res.send("В процессе верстки")
 });
 
-// app.get("/registration", (req, res) => {
-//     res.render("/registration_auth")
-// })
+app.get("/registration", (req, res) => {
+    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\registration_auth.html')
+});
