@@ -82,14 +82,14 @@ app.use(cookieParser()); // используется для разбора и с
 
 // Забор данных с формы и регистрация
     app.post('/register', encodeUrl, (req, res) => {
-        var firstname = req.body.firstName;
-        var surname = req.body.surName;
+        var firstname = req.body.firstname;
+        var surname = req.body.surname;
         var mail = req.body.mail;
         var login = req.body.login;
         var password = req.body.password;
 
         // проверка на то что есть ли данные такого юзера в бдшке или нету
-    connection.query(`SELECT * FROM Users WHERE fisrtname = '${fisrtName}' AND surname = '${surName}'`), function(err, result){
+    connection.query(`SELECT * FROM Users WHERE firstname = '${firstname}' AND surname = '${surname}'`), function(err, result){
         if(err){
             console.log(err)
         };
@@ -99,8 +99,8 @@ app.use(cookieParser()); // используется для разбора и с
             // страница пользователя
             function userPage(){
                 req.session.user = {
-                    firstname: firstName,
-                    surname: surName,
+                    firstname: firstname,
+                    surname: surname,
                     login: login,
                     password: password
                 };
@@ -110,7 +110,7 @@ app.use(cookieParser()); // используется для разбора и с
 
             // Важно не ошибится с {} и прочим отделением ВНИМАТЕЛЬНИЕ создатель
             // вставка данных в БД в момент регистрации
-            var sql = `INSERT INTO Users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surName}','${mail}', '${login}','${password}')`;
+            var sql = `INSERT INTO Users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surname}','${mail}', '${login}','${password}')`;
             connection.query(sql, function(err, result){
                 if(err){
                     console.log(err)
@@ -126,6 +126,8 @@ app.use(cookieParser()); // используется для разбора и с
 
 //Авторизация юзера на сайте 
 
+
+// проверку и прочее в блок ниже как и с регом
 app.post("/personal_office", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
@@ -137,7 +139,7 @@ app.post("/personal_office", encodeUrl, (req, res) => {
             console.log("Неправильные введёные данные")
         };
 
-        connection.query(`SELECT * FROM users where login = '${login_from_user}' AND password = '${password_from_user}'`, function (err, result){
+        connection.query(`SELECT * FROM users where login = '${userLogin}' AND password = '${userPassword}'`, function (err, result){
             if(err){
                 console.log("Такого юзера нету, досвидание")
             };
