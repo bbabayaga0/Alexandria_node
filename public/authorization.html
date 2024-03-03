@@ -8,11 +8,13 @@
 </head>
 <body>
     <div id="block_Reg_Auth">
-        <input type="text" placeholder=" Ваш логин пожалуйста"><br>
-        <input type="text" placeholder=" Ваш пароль пожалуйста"><br>
+        <form action = "/authorization" method="POST">
+        <input type="text" placeholder=" Ваш логин пожалуйста"  name="login_from_user"><br>
+        <input type="text" placeholder=" Ваш пароль пожалуйста" name="password_from_user"><br>
         <a href="/personal_office.html">Войти</a>
         <br>
         <a href="/">Передумали регистрироваться? Вернитесь на главную</a>
+        </form>
     </div>
 </body>
 </html>
