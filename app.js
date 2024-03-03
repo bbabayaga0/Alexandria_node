@@ -2,7 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const http = require('http');
-var parseUrl = require('body-parser');
+const parseUrl = require('body-parser');
 const app = express();
 
 const mysql = require("mysql");
@@ -63,16 +63,12 @@ const connection = mysql.createConnection({
     database: "Alexandria",
 });
 
-// Забор данных с формы
-app.post('/register', encodeUrl, (req, res) => {
-    var firstname = req.body.firstName;
-    var surname = req.body.surName;
-    var mail = req.body.mail;
-    var login = req.body.login;
-    var password = req.body.password;
+// проверка на соединение, если возникла ошибка срабатывает данная функция
+connection.connect(function(err){
+    if(err){
+        console.log(err)
+    };
 
-    
-});
 
 // midlleware сессии
 app.use(session({
@@ -84,14 +80,16 @@ app.use(session({
 
 app.use(cookieParser()); // используется для разбора и составления HTTP-куки, позволяя Node.js работать с куками, отправленными клиентом
 
-// проверка на соединение, если возникла ошибка срабатывает данная функция
-connection.connect(function(err){
-    if(err){
-        console.log(err)
-    };
+// Забор данных с формы и регистрация
+    app.post('/register', encodeUrl, (req, res) => {
+        var firstname = req.body.firstName;
+        var surname = req.body.surName;
+        var mail = req.body.mail;
+        var login = req.body.login;
+        var password = req.body.password;
 
-// проверка на то что есть ли данные такого юзера в бдшке или нету
-    connection.query(`SELECT * FROM users WHERE username = '${fisrtName}' AND password = '${surName}'`), function(err, result){
+        // проверка на то что есть ли данные такого юзера в бдшке или нету
+    connection.query(`SELECT * FROM Users WHERE fisrtname = '${fisrtName}' AND surname = '${surName}'`), function(err, result){
         if(err){
             console.log(err)
         };
@@ -112,16 +110,18 @@ connection.connect(function(err){
 
             // Важно не ошибится с {} и прочим отделением ВНИМАТЕЛЬНИЕ создатель
             // вставка данных в БД в момент регистрации
-            var sql = `INSERT INTO users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surName}','${mail}', '${login}','${password}')`;
+            var sql = `INSERT INTO Users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surName}','${mail}', '${login}','${password}')`;
             connection.query(sql, function(err, result){
                 if(err){
                     console.log(err)
                 }else{
                     userPage()
                 }
-            })
+                })
+            }
         }
-    }
+    });
+
 })
 
 //Авторизация юзера на сайте 
