@@ -69,4 +69,24 @@ app.use(Session({
 
 app.use(cookieParser()); // используется для разбора и составления HTTP-куки, позволяя Node.js работать с куками, отправленными клиентом
 
-
+connection.connect(function(err){
+    if(err){
+        document.writeln(err)
+    };
+// проверка на то что есть ли данные такого юзера в бдшке или нету
+    connection.query(`SELECT * FROM users WHERE username = '${userName}' AND password = '${surName}'`), function(err, result){
+        if(err){
+            document.writeln(err)
+        };
+        if(Object.keys(result).length > 0){
+            document.writeln("ошибка при регистрации, такое пользователь скорее всего существует")
+        }else{
+            // страница пользователя
+            function userPage(){
+                req.Session.user = {
+                    firstname = 
+                }
+            }
+        }
+    }
+})
