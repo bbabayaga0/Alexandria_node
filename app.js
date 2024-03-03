@@ -12,7 +12,7 @@ const { encode } = require('punycode');
 let encodeUrl = parseUrl.urlencoded({ extended: false });
 
 const path = require("path");
-const port = 3000;
+const port = 4000;
 
 
 app.set("view engine", "ejs");
@@ -65,8 +65,8 @@ const connection = mysql.createConnection({
 
 // Забор данных с формы
 app.post('/register', encodeUrl, (req, res) => {
-    var firstName = req.body.firstName;
-    var surName = req.body.surName;
+    var firstname = req.body.firstName;
+    var surname = req.body.surName;
     var mail = req.body.mail;
     var login = req.body.login;
     var password = req.body.password;
@@ -91,7 +91,7 @@ connection.connect(function(err){
     };
 
 // проверка на то что есть ли данные такого юзера в бдшке или нету
-    connection.query(`SELECT * FROM users WHERE username = '${userName}' AND password = '${surName}'`), function(err, result){
+    connection.query(`SELECT * FROM users WHERE username = '${fisrtName}' AND password = '${surName}'`), function(err, result){
         if(err){
             console.log(err)
         };
