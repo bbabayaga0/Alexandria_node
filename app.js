@@ -1,16 +1,19 @@
-const app = express();
 const express = require("express");
-const sessions = require('express-session');
-const port = 3000;
-// const path = require("path");
-const mysql = require("mysql");
-
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
+const http = require('http');
 var parseUrl = require('body-parser');
-const { session } = require("express-session");
+const app = express();
+
+const mysql = require("mysql");
 const { encode } = require('punycode');
 
 
 let encodeUrl = parseUrl.urlencoded({ extended: false });
+
+const path = require("path");
+const port = 3000;
+
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -84,20 +87,20 @@ app.use(cookieParser()); // используется для разбора и с
 // проверка на соединение, если возникла ошибка срабатывает данная функция
 connection.connect(function(err){
     if(err){
-        document.writeln(err)
+        console.log(err)
     };
 
 // проверка на то что есть ли данные такого юзера в бдшке или нету
     connection.query(`SELECT * FROM users WHERE username = '${userName}' AND password = '${surName}'`), function(err, result){
         if(err){
-            document.writeln(err)
+            console.log(err)
         };
         if(Object.keys(result).length > 0){
-            document.writeln("ошибка при регистрации, такое пользователь скорее всего существует") // можно заменить на страницу с ошибчной регистрацией res.sendFile(__dirname + '/failReg.html');
+            console.log("ошибка при регистрации, такое пользователь скорее всего существует") // можно заменить на страницу с ошибчной регистрацией res.sendFile(__dirname + '/failReg.html');
         }else{
             // страница пользователя
             function userPage(){
-                req.Session.user = {
+                req.session.user = {
                     firstname: firstName,
                     surname: surName,
                     login: login,
@@ -112,7 +115,7 @@ connection.connect(function(err){
             var sql = `INSERT INTO users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surName}','${mail}', '${login}','${password}')`;
             connection.query(sql, function(err, result){
                 if(err){
-                    document.writeln(err)
+                    console.log(err)
                 }else{
                     userPage()
                 }
@@ -131,12 +134,12 @@ app.post("/personal_office", encodeUrl, (req, res) => {
     // проверка 
     connection.connect(function(err) {
         if(err){
-            document.writeln("Неправильные введёные данные")
+            console.log("Неправильные введёные данные")
         };
 
         connection.query(`SELECT * FROM users where login = '${login_from_user}' AND password = '${password_from_user}'`, function (err, result){
             if(err){
-                document.writeln("Такого юзера нету, досвидание")
+                console.log("Такого юзера нету, досвидание")
             };
             function userPage(){
                 // создание ссесии для юзера и хранение его инфы
@@ -151,7 +154,7 @@ app.post("/personal_office", encodeUrl, (req, res) => {
             if(Object.keys(result).length > 0){
                 userPage();
             }else{
-                document.writeln("Ошибка при авторизации, такого юзера не существует")
+                console.log("Ошибка при авторизации, такого юзера не существует")
             }
         });
     })
