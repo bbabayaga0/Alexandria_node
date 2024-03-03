@@ -1,10 +1,14 @@
-const express = require("express");
 const app = express();
+const express = require("express");
+const sessions = require('express-session');
 const port = 3000;
-const path = require("path");
+// const path = require("path");
 const mysql = require("mysql");
+
 var parseUrl = require('body-parser');
-const { Session } = require("inspector");
+const { session } = require("express-session");
+const { encode } = require('punycode');
+
 
 let encodeUrl = parseUrl.urlencoded({ extended: false });
 
@@ -68,7 +72,7 @@ app.post('/register', encodeUrl, (req, res) => {
 });
 
 // midlleware сессии
-app.use(Session({
+app.use(session({
     secret: "dontcarewhatwrotethis",
     saveUninitialized: true,
     cookie: {maxAge: 1000 * 60 * 60 * 12}, //12 часов
