@@ -26,3 +26,11 @@ input{
     margin: 5px;
     size: 1px;
 }
+
+#butt1{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    word-wrap: break-word;
+    margin: 5px;
+    size: 1px;
+}

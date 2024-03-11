@@ -12,7 +12,7 @@ const { encode } = require('punycode');
 let encodeUrl = parseUrl.urlencoded({ extended: false });
 
 const path = require("path");
-const port = 4000;
+const port = 3000;
 
 
 app.set("view engine", "ejs");
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 // Показывает локальную ссылку на сайт
 
 app.listen(port, ()=>{
-    console.log(`Твой сервак запущен тут http:localhost:${port}, только тихо))`)
+    console.log(`Твой сервак запущен тут http://localhost:${port}, только тихо))`)
 });
 
 // переходы
@@ -63,13 +63,6 @@ const connection = mysql.createConnection({
     database: "Alexandria",
 });
 
-// проверка на соединение, если возникла ошибка срабатывает данная функция
-connection.connect(function(err){
-    if(err){
-        console.log(err)
-    };
-
-
 // midlleware сессии
 app.use(session({
     secret: "dontcarewhatwrotethis",
@@ -81,48 +74,50 @@ app.use(session({
 app.use(cookieParser()); // используется для разбора и составления HTTP-куки, позволяя Node.js работать с куками, отправленными клиентом
 
 // Забор данных с формы и регистрация
-    app.post('/register', encodeUrl, (req, res) => {
-        var firstname = req.body.firstname;
-        var surname = req.body.surname;
-        var mail = req.body.mail;
-        var login = req.body.login;
-        var password = req.body.password;
+// Важно не ошибится с {} и прочим отделением ВНИМАТЕЛЬНИЕ создатель
+// вставка данных в БД в момент регистрации
 
-        // проверка на то что есть ли данные такого юзера в бдшке или нету
-    connection.query(`SELECT * FROM Users WHERE firstname = '${firstname}' AND surname = '${surname}'`), function(err, result){
-        if(err){
-            console.log(err)
-        };
-        if(Object.keys(result).length > 0){
-            console.log("ошибка при регистрации, такое пользователь скорее всего существует") // можно заменить на страницу с ошибчной регистрацией res.sendFile(__dirname + '/failReg.html');
-        }else{
-            // страница пользователя
-            function userPage(){
-                req.session.user = {
-                    firstname: firstname,
-                    surname: surname,
-                    login: login,
-                    password: password
-                };
+app.post('/register', encodeUrl, (req, res) => {
+        var firstname = req.body.firstName;
+        var surname = req.body.Surname;
+        var login = req.body.Login;
+        var password = req.body.Password;
 
-                res.redirect('/personal_office')
+        connection.connect(function(err) {
+            if(err){
+                console.log(err)
             }
 
-            // Важно не ошибится с {} и прочим отделением ВНИМАТЕЛЬНИЕ создатель
-            // вставка данных в БД в момент регистрации
-            var sql = `INSERT INTO Users (firstname, surname, mail, login, password) VALUES ('${firstname}', '${surname}','${mail}', '${login}','${password}')`;
-            connection.query(sql, function(err, result){
-                if(err){
-                    console.log(err)
-                }else{
-                    userPage()
+        // Проверка на наличие пользователя в БД
+        connection.query(`SELECT * FROM Users WHERE login = '${login}' AND password = '${password}'`, function(err,result){
+            if(err){
+                console.log(err)
+            };
+            if(Object.keys(result).length > 0){
+                res.sendFile(__dirname + 'C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailReg.html');
+            }else{
+                function userPage(){
+                    req.session.user = {
+                        firstname: firstname,
+                        surname: surname,
+                        login: login,
+                        password: password
+                    };
+                    res.redirect('/personal_office')
                 }
-                })
+                var sql = `INSERT INTO Users (firstname, surname, login, password ) VALUES ('${firstname}', '${surname}', '${login}', '${password}')`;
+                    connection.query(sql, function (err, result) {
+                        if(err){
+                            console.log(err)
+                        }else{
+                            userPage();
+                        };
+                    });
             }
-        }
-    });
+        });//92 строка 
+    });// с 86 строки
+}); //80 cтрока
 
-})
 
 //Авторизация юзера на сайте 
 
