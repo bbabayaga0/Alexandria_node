@@ -68,7 +68,7 @@ app.use(session({
     secret: "dontcarewhatwrotethis",
     saveUninitialized: true,
     cookie: {maxAge: 1000 * 60 * 60 * 12}, //12 часов
-    resave: false
+    resave: true
 }));
 
 app.use(cookieParser()); // используется для разбора и составления HTTP-куки, позволяя Node.js работать с куками, отправленными клиентом
@@ -158,7 +158,6 @@ app.post("/personal_office", encodeUrl, (req, res) => {
 });
 
 
-
 /*
 
 // После успешной авторизации устанавливаем имя пользователя в переменную сессии
@@ -167,10 +166,10 @@ req.session.username = user.username
 // На каждой странице проверяем, есть ли переменная сессии с именем пользователя
 if (req.session && req.session.username) {
   // Выводим имя пользователя
-  console.log(`Hello, ${req.session.username}!`);
+  console.log(`Привет, ${req.session.username}!`);
 } else {
   // Если переменной сессии нет, выводим сообщение об отсутствии авторизации
-  console.log("You are not authorized.");
+  console.log("Вы не авторизованы");
 }
 
 */
