@@ -94,7 +94,7 @@ app.post('/register', encodeUrl, (req, res) => {
                 console.log(err)
             };
             if(Object.keys(result).length > 0){
-                res.sendFile(__dirname + 'C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailReg.html');
+                res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailReg.html');
             }else{
                 function userPage(){
                     req.session.user = {
@@ -156,3 +156,21 @@ app.post("/personal_office", encodeUrl, (req, res) => {
         });
     })
 });
+
+
+
+/*
+
+// После успешной авторизации устанавливаем имя пользователя в переменную сессии
+req.session.username = user.username
+
+// На каждой странице проверяем, есть ли переменная сессии с именем пользователя
+if (req.session && req.session.username) {
+  // Выводим имя пользователя
+  console.log(`Hello, ${req.session.username}!`);
+} else {
+  // Если переменной сессии нет, выводим сообщение об отсутствии авторизации
+  console.log("You are not authorized.");
+}
+
+*/
