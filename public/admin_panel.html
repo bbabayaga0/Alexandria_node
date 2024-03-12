@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin_panel_styles.css">
+    <title>Administration panel</title>
+</head>
+<body>
+    <div id="top_menu_admin_panel">
+        <a href="/">Главная страница</a>
+        <a href="/authorization">Авторизация/Регистрация</a>
+    </div>
+    <hr>
+<!-- Эдит инфорамации в бдшке -->
+    <div id="edit_info_in_BD">
+        <form action="" method="POST">
+            <input type="text"   placeholder="Поиск по названию продукта"><br><br>
+            <input type="text"   placeholder="Изменение цены товара "><br><br>
+            <input type="text"   placeholder="Изменение года релиза"><br><br>
+            <input type="submit" placeholder="Изменить" value="Изменить"><br>
+        </form>
+    </div>
+<!-- удаление информации из бдшки -->
+    <div id="delete_info_in_BD">
+        <form action="" method="POST">
+            <input type="text"   placeholder="Поиск по названию продукта"><br><br>
+            <input type="submit" placeholder="Изменить" value="Удалить"><br>
+        </form>
+    </div>
+<!-- добавлние информации -->
+    <div id="add_info_in_BD">
+        <form action="" method="POST">
+            <input type="text"   placeholder="Название продукта"><br><br>
+            <input type="text"   placeholder="Цена товара "><br><br>
+            <input type="text"   placeholder="Год релиза"><br><br>
+            <input type="submit" placeholder="Добавить" value="Добавить"><br>
+        </form>
+    </div>
+
+    <br><br><br>
+    <hr>
+
+    <div id="order_users">
+        <form action="/orders_users" method="POST">
+            <table>
+                <tr>
+                    <th scope="col">product_name</th>
+                    <th scope="col">mail_users</th>
+                    <th scope="col">order_code</th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+*{
+    font: 18px K2D;
+    background-color: #E0E1E9;
+}
+
+a { 
+    text-decoration: none;
+    color: black;
+    border: 1px solid #E0E1E9 ;
+}
+
+a:hover{
+    color: #AB87FF ;
+}
+
+input{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    word-wrap: break-word;
+    
+}
+
+#edit_info_in_BD{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    width: 300px;
+    height: 275px;
+    text-align: center;
+    align-items: center;
+    margin-left: 100px;
+    margin-top: 100px;
+    padding-top: 25px;
+}
+
+#delete_info_in_BD{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    width: 300px;
+    height: 275px;
+    text-align: center;
+    align-items: center;
+    margin-left: 600px;
+    margin-top: -300px;
+    padding-top: 25px;
+}
+
+#add_info_in_BD{
+    border: 0.5px solid black;
+    border-radius: 20px;
+    width: 300px;
+    height: 275px;
+    text-align: center;
+    align-items: center;
+    margin-left: 1110px;
+    margin-top: -300px;
+    padding-top: 25px;
+}
+
+/* для таблицы */
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+thead,tfoot {
+    background-color: rgb(228 240 245);
+  }
+  
+  th,
+  td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+  }
+  
+td:last-of-type {
+    text-align: center;
+  }
+  
+tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+  }
+  
+tfoot th {
+    text-align: right;
+  }
+  
+tfoot td {
+    font-weight: bold;
+  }
+/*  */
