@@ -164,7 +164,7 @@ app.post("/personal_office", encodeUrl, (req, res) => {
 
 // обработка заказов из бд для отображения в админ-панели
 
-app.get('/orders_users', (req,res ) =>{
+app.post('/orders_users', (req,res ) =>{
     connection.connect(err => {
         if(err){
             return res.status(500).send({error: 'Ошибка подключения к базе данных'})
