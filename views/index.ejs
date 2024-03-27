@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <title>website Alexandria</title>
     <link rel="stylesheet" href="/main_styles.css">
+    <script src="/slider.js"></script>
 </head>
 <body>
     <div id="button_reg_auth">
-        <a href="/registration">Регистрация/Авторизация</a>
+        <a id="main_menu_href" href="/registration">Регистрация/Авторизация</a>
     </div>
     <nav id="main_menu">
-        <a href="/">Главная</a>
-        <a href="/about">О_компании</a>
-        <a href="/my_product">Готовые_наборы</a>
+        <a id="main_menu_href" href="/">Главная</a>
+        <a id="main_menu_href" href="/about">О_компании</a>
+        <a id="main_menu_href" href="/my_product">Готовые_наборы</a>
     </nav>
     <br><br> 
     <hr>
-    
     <div id="main_div_page1">
-
+        <br>
+        <div class="slider-container">
+            <div class="slider">
+              <img src="/EMM.jpg" alt="что-то">
+              <img src="/likoris_red.jpg" alt="что-то">
+              <img src="/likoris_blue.jpg" alt="что-то">
+            </div>
+            <button class="prev-button" aria-label="Посмотреть предыдущий слайд">&lt;</button>
+            <button class="next-button" aria-label="Посмотреть следующий слайд">&gt;</button>
+          </div>
     </div>
+    
     <hr>
     <div id="bottom_div_page1">
         <p style="word-spacing: 3px;"> Телефон: +7-900-322-33-22.  Онлайн-магазин написан студентом 4 курса. Находится территориально в г.Пенза Пушкина 137. 10 этаж офис 28.</p>

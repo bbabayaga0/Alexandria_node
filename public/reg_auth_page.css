@@ -12,6 +12,7 @@ a:hover{
 }
 #block_Reg_Auth{
     border: 1px solid #E0E1E9;
+    border-radius: 25px;
     width: 1530px;
     height: 460px;
     text-align: center;
