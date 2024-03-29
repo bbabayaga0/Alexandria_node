@@ -21,7 +21,7 @@ a:hover{
     height: 580px;
 }
 #bottom_div_page{
-    border: 1px solid black;
+    border: 1px solid #E0E1E9;
     width: 1520px;
     height: 39px;
     word-spacing: 3px;
@@ -35,7 +35,8 @@ a:hover{
     margin-left: 1300px;
 }
 #update_user_password{
-    border: 1px solid #E0E1E9;
+    border: 1px solid black;
+    border-radius: 20px;
     width: 300px;
     height: 300px;
     margin-left: 50px;
@@ -45,7 +46,8 @@ a:hover{
     padding: 10px;
 }
 #user_reviews{
-    border: 1px solid #E0E1E9;
+    border: 1px solid black;
+    border-radius: 20px;
     width: 300px;
     height: 300px;  
     margin-left: 1100px;
@@ -58,4 +60,10 @@ input{
     border-radius: 20px;
     word-wrap: break-word;
     
+}
+
+#main_menu_href{
+    padding: 4px 4px 4px 4px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
