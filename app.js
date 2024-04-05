@@ -33,11 +33,12 @@ app.listen(port, ()=>{
 // переходы
 
 app.get("/about", (req,res) =>{
-    res.send("О нас вы тут инфы не найдете")
+    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\about_us.html')
 });
 
 app.get("/my_product", (req, res) => {
-    res.send("В процессе верстки")
+    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\ready_sets.html')
+
 });
 
 app.get("/registration", (req, res) => {
