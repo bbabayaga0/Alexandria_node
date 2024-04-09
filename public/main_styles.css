@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 *{
     font: 18px K2D;
     background-color: #E0E1E9;
@@ -13,7 +14,10 @@ a:hover{
 #main_menu{
     text-align: center;
     word-spacing: 22px;
-    
+    border: 1px solid #E0E1E9; /* Для подгона менюшки */
+    width: 1000px;
+    margin-left: 300px; 
+    margin-top: -110px; /* Для подгона менюшки */
 }
 h1,p{
     text-align: center;
@@ -21,7 +25,7 @@ h1,p{
 #main_div_page1{
     border: 1px solid #E0E1E9;
     width: 1520px;
-    height: 580px;
+    height: 550px;
 }
 #bottom_div_page1{
     border: 1px solid #E0E1E9;
@@ -35,11 +39,11 @@ h1,p{
 #button_reg_auth{
     margin-left: 1300px;
 }
-#main_logo{
+/* #main_logo{
     width: 100px;
     height: 100px;
     background-color: #E0E1E9;
-}
+} */
 
 #main_menu_href{
     padding: 4px 4px 4px 4px;
@@ -96,5 +100,12 @@ h1,p{
 #logotip{
   width: 100px;
   height: 100px;
-  marker-start: 5px 5px 5px 5px;
+  margin-left: 100px;
+  margin-top: -22px;
+  border: 1px solid #E0E1E9; /* Для подгона менюшки */
+}
+#logo_name{
+  margin-left: 60px;
+  margin-top: -19px;
+  font: 28px K2D;
 }

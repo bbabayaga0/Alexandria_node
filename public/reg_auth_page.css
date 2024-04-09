@@ -1,6 +1,7 @@
 *{
     font: 18px K2D;
-    background-color: #E0E1E9;
+    /* background: rgb(106,16,83);
+    background: linear-gradient(33deg, rgba(106,16,83,1) 0%, rgba(73,183,228,1) 100%, rgba(0,212,255,1) 100%); */
 }
 a { 
     text-decoration: none;
@@ -11,14 +12,14 @@ a:hover{
     color: #AB87FF ;
 }
 #block_Reg_Auth{
-    border: 1px solid #E0E1E9;
+    border: 1px solid black;
     border-radius: 25px;
-    width: 1530px;
-    height: 460px;
+    width: 450px;
+    height: 400px;
     text-align: center;
     justify-content: center;
-    padding-top: 300px;
-    
+    margin-top: 300px;
+    margin-left: 550px;
 }
 input{
     border: 0.5px solid black;
@@ -35,3 +36,5 @@ input{
     margin: 5px;
     size: 1px;
 }
+
+
