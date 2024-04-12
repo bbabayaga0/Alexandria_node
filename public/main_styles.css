@@ -15,9 +15,9 @@ a:hover{
     text-align: center;
     word-spacing: 22px;
     border: 1px solid #f8f8ff; /* Для подгона менюшки */
-    width: 1000px;
-    margin-left: 300px; 
-    margin-top: -110px; /* Для подгона менюшки */
+    width: 750px;
+    margin-left: 350px; 
+    margin-top: -155px; /* Для подгона менюшки */
 }
 h1,p{
     text-align: center;
@@ -32,18 +32,9 @@ h1,p{
     width: 1520px;
     height: 39px;
 }
-#logotip{
-    width: 100px;
-    height: 50px;
-}
 #button_reg_auth{
     margin-left: 1300px;
 }
-/* #main_logo{
-    width: 100px;
-    height: 100px;
-    background-color: #f8f8ff;
-} */
 
 #main_menu_href{
     padding: 4px 4px 4px 4px;
@@ -51,6 +42,28 @@ h1,p{
     border-radius: 20px;
 }
 
+#logo_test{
+  background-color: #f8f8ff;
+  border: 1px solid #AB87FF;
+  border-radius: 20px;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 45px;
+}
+
+#text_for_logo{
+  text-align: center;
+  justify-content: center;
+}
+
+#logo_name{
+  margin-left: 60px;
+  margin-top: -85px;
+  font: 28px K2D;
+}
+
+
+/* slider  */
 .page-title {
     text-align: center;
   }
@@ -95,17 +108,3 @@ h1,p{
     right: 10px;
   }
 
-
-
-#logotip{
-  width: 100px;
-  height: 100px;
-  margin-left: 100px;
-  margin-top: -22px;
-  border: 1px solid #f8f8ff; /* Для подгона менюшки */
-}
-#logo_name{
-  margin-left: 60px;
-  margin-top: -19px;
-  font: 28px K2D;
-}
