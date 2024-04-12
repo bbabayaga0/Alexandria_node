@@ -6,7 +6,7 @@
 a { 
     text-decoration: none;
     color: black;
-    border: 1px solid #E0E1E9 ;
+    border: 1px solid #f8f8ff ;
 }
 a:hover{
     color: #AB87FF ;
@@ -21,6 +21,15 @@ a:hover{
     margin-top: 150px;
     margin-left: 550px;
 }
+
+#registration-form{
+    margin-top: 55px;
+}
+
+#authorization_form{
+    margin-top: 125px;
+}
+
 input{
     border: 0.5px solid black;
     border-radius: 20px;
