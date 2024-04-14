@@ -43,7 +43,7 @@ h1,p{
 }
 
 #logo_test{
-  background-color: #f8f8ff;
+  background-color: #AB87FF;
   border: 1px solid #AB87FF;
   border-radius: 20px;
   width: 55px;
@@ -52,6 +52,7 @@ h1,p{
 }
 
 #text_for_logo{
+  background-color: #AB87FF;
   text-align: center;
   justify-content: center;
 }
