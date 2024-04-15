@@ -43,7 +43,7 @@ h1,p{
 }
 
 #logo_test{
-  background-color: #AB87FF;
+  background-color: #f8f8ff;
   border: 1px solid #AB87FF;
   border-radius: 20px;
   width: 55px;
@@ -52,7 +52,7 @@ h1,p{
 }
 
 #text_for_logo{
-  background-color: #AB87FF;
+  background-color: #f8f8ff;
   text-align: center;
   justify-content: center;
 }
@@ -63,49 +63,88 @@ h1,p{
   font: 28px K2D;
 }
 
+#div_block_1{
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  margin-left: 100px;
+}
 
-/* slider  */
-.page-title {
-    text-align: center;
-  }
-  
-  .slider-container {
-    position: relative;
-    width: 800px;
-    height: 500px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .prev-button,
-  .next-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    color: white;
-  }
-  
-  .prev-button {
-    left: 10px;
-  }
-  
-  .next-button {
-    right: 10px;
-  }
+#div_block_2{
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  margin-left: 600px;
+  margin-top: -350px;
 
+}
+
+#div_block_3{
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  margin-left: 1100px;
+  margin-top: -351px;
+
+}
+
+#text_center_1{
+  text-align: center;
+  justify-content: center;
+  margin-left: 120px;
+}
+
+#test_jpg{
+  width: 150px;
+  height: 150px;
+}
+
+#text_center_2_1{
+  text-align: center;
+  justify-content: center;
+  margin-left: -165px;
+  margin-top: 255px;
+}
+
+#text_center_2_2{
+  text-align: center;
+  justify-content: center;
+  margin-left: -205px;
+  margin-top: 255px;
+}
+
+
+#text_center_2_3{
+  text-align: center;
+  justify-content: center;
+  margin-left: -225px;
+  margin-top: 255px;
+}
+
+#information_about_us{
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 300px;
+  height: 550px;
+}
+
+#img_ya_maps{
+  border: 1px solid black;
+  border-radius: 25px;
+  margin-left: 350px;
+  margin-top: -550px;
+  width: 1000px;
+  height: 550px;
+}
+
+#img_yamaps{
+  width: 999px;
+  height: 548px;
+  border-radius: 25px;
+}
