@@ -94,7 +94,7 @@ app.post('/register', encodeUrl, (req, res) => {
             }
 
         // Проверка на наличие пользователя в БД
-        connection.query(`SELECT * FROM Users WHERE login = '${login}' AND password = '${password}'`, function(err,result){
+        connection.query(`SELECT * FROM Users WHERE login = '${login_from_user}' AND password = '${password_from_user}'`, function(err,result){
             if(err){
                 console.log(err)
             };
