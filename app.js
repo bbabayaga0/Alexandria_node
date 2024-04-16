@@ -105,7 +105,7 @@ app.post('/register', encodeUrl, (req, res) => {
                     req.session.user = {
                         firstname: firstname,
                         surname: surname,
-                        login: login,
+                        login: login, 
                         password: password
                     };
                     res.redirect('/personal_office')
@@ -128,7 +128,7 @@ app.post('/register', encodeUrl, (req, res) => {
 
 //Авторизация юзера на сайте 
 // проверка и прочее в блоке ниже как и с регистрацией
-app.post("/personal_office", encodeUrl, (req, res) => {
+app.post("/authorization_form", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
     var userPassword = req.body.password_from_user;

@@ -1,12 +1,12 @@
 *{
     font: 18px K2D;
-    background-color: #E0E1E9;
+    background-color: #f8f8ff;
 }
 
 a { 
     text-decoration: none;
     color: black;
-    border: 1px solid #E0E1E9 ;
+    border: 1px solid #f8f8ff ;
 }
 
 a:hover{
