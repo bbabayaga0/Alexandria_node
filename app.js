@@ -94,7 +94,7 @@ app.post('/register', encodeUrl, (req, res) => {
             }
 
         // Проверка на наличие пользователя в БД
-        connection.query(`SELECT * FROM Users WHERE login = '${login_from_user}' AND password = '${password_from_user}'`, function(err,result){
+        connection.query(`SELECT * FROM Users WHERE login = '${login}' AND password = '${password}'`, function(err,result){
             if(err){
                 console.log(err)
             };
@@ -128,7 +128,7 @@ app.post('/register', encodeUrl, (req, res) => {
 
 //Авторизация юзера на сайте 
 // проверка и прочее в блоке ниже как и с регистрацией
-app.post("/authorization_form", encodeUrl, (req, res) => {
+app.post("/authorization_users", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
     var userPassword = req.body.password_from_user;
@@ -139,7 +139,7 @@ app.post("/authorization_form", encodeUrl, (req, res) => {
             document.writeln("Неправильные введёные данные")
         };
 
-        connection.query(`SELECT * FROM users where login = '${userLogin}' AND password = '${userPassword}'`, function (err, result){
+        connection.query(`SELECT * FROM Users where login = '${userLogin}' AND password = '${userPassword}'`, function (err, result){
             if(err){
                 res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailAuth.html');
             };
@@ -177,7 +177,7 @@ app.post('/orders_users', (req,res ) =>{
             if(err){
                 console.log("ошибка выполения запроса")
             }
-        
+
             res.send({ orders: results });
         });
     })
