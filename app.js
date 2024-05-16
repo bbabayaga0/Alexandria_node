@@ -160,3 +160,13 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
         });
     })
 });
+
+
+//Авторизация админа
+app.post("/authorization_users", encodeUrl, (req,res) =>{
+        // забор данных с формы при авторизации 
+        var AdminLogin = req.body.login_from_user;
+        var AdminPassword = req.body.password_from_user;
+    
+        
+});
