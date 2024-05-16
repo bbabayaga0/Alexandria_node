@@ -170,3 +170,5 @@ app.post("/authorization_users", encodeUrl, (req,res) =>{
     
         
 });
+
+// изменение информации товара в бд от админа
