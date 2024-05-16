@@ -121,13 +121,12 @@ app.post('/register', encodeUrl, (req, res) => {
             }
         });//96 строка 
     });// с 90 строки
-}); //84 cтрока
+}); //85 cтрока
 
 
 
 
-//Авторизация юзера на сайте 
-// проверка и прочее в блоке ниже как и с регистрацией
+//Авторизация 
 app.post("/authorization_users", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
@@ -136,10 +135,10 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
     // проверка 
     connection.connect(function(err) {
         if(err){
-            document.writeln("Неправильные введёные данные")
+            console.log(err)
         };
 
-        connection.query(`SELECT * FROM Users where login = '${userLogin}' AND password = '${userPassword}'`, function (err, result){
+        connection.query(`SELECT * FROM Users WHERE login = '${userLogin}' AND password = '${userPassword}'`, function (err, result){
             if(err){
                 res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailAuth.html');
             };
@@ -148,8 +147,8 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
                 req.session.user = {
                     firstname: result[0].firstname,
                     surname: result[0].surname,
-                    login: login,
-                    password: password
+                    userLogin: userLogin,
+                    userPassword: userPassword
                 };
                     res.redirect('/personal_office')
             }
@@ -161,42 +160,3 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
         });
     })
 });
-
-
-// обработка заказов из бд для отображения в админ-панели
-
-app.post('/orders_users', (req,res ) =>{
-    connection.connect(err => {
-        if(err){
-            return res.status(500).send({error: 'Ошибка подключения к базе данных'})
-        }
-
-        const query = `SELECT * FROM orders`;
-
-        connection.query(query, (err, results) => {
-            if(err){
-                console.log("ошибка выполения запроса")
-            }
-
-            res.send({ orders: results });
-        });
-    })
-})
-
-// 
-
-/*
-
-// После успешной авторизации устанавливаем имя пользователя в переменную сессии
-req.session.username = user.username
-
-// На каждой странице проверяем, есть ли переменная сессии с именем пользователя
-if (req.session && req.session.username) {
-  // Выводим имя пользователя
-  console.log(`Привет, ${req.session.username}!`);
-} else {
-  // Если переменной сессии нет, выводим сообщение об отсутствии авторизации
-  console.log("Вы не авторизованы");
-}
-/
-*/
