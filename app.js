@@ -171,4 +171,28 @@ app.post("/authorization_users", encodeUrl, (req,res) =>{
         
 });
 
-// изменение информации товара в бд от админа
+// изменение информации товара в бд от админа (протестить надо)
+app.post("/edit_info_in_BD", encodeUrl, (req,res) =>{
+    var find_product = req.body.find_product;
+    var edit_price = req.body.edit_price;
+    var edit_year  = req.body.edit_years_realise;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        }
+
+//проверка на наличие товара в бд
+        connection.query(`SELECT * FROM product_site WHERE product_name = '${find_product}', price = '${edit_price}', year_realise = '${edit_year}'`, function(err, result){
+        if(err){
+            console.log(err)
+        };
+        if(Object.keys(result) > 0){
+            console.log(err)
+        }else{
+            connection.query(`UPDATE product_site SET product_name = '${find_product}', price = '${edit_price}', year_realise = '${edit_year}'`);
+        }
+
+        });
+    });
+});
