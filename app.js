@@ -203,7 +203,6 @@ app.post("/delete_info_in_BD", encodeUrl, (req,res) =>{
             console.log(err)
         }
 
-//проверка на наличие в бд
 connection.query(`DELETE FROM products_site WHERE product_name = '${finder_to_delete}'`, function(err, result){
         if(err){
             console.log(err)
@@ -212,13 +211,13 @@ connection.query(`DELETE FROM products_site WHERE product_name = '${finder_to_de
     });
 });
 
-//добавление товара в бд()
+//добавление товара в бд(Выбивает сервер, не знаю почему запрос корректен)
 app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
     var name_product_to_upload = req.body.name_product_to_add;
     var price_product_to_upload = req.body.price_product_to_add;
     var year_release_to_upload = req.body.year_release_to_add;
 
-        connection.connect(`INSERT INTO products_site (product_name, price, year_release) VALUES ('${name_product_to_upload}', '${price_product_to_upload}', '${year_release_to_upload}'`, function(err, result){
+        connection.connect(`INSERT INTO products_site ('product_name', 'price', 'year_release') VALUES ('${name_product_to_upload}', '${price_product_to_upload}', '${year_release_to_upload}'`, function(err){
             if(err){
                 console.log(err)
             }
