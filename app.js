@@ -6,7 +6,6 @@ const parseUrl = require('body-parser');
 const app = express();
 
 const mysql = require("mysql");
-const Joi = require('joi');
 const { encode } = require('punycode');
 
 
@@ -124,15 +123,16 @@ app.post('/register', encodeUrl, (req, res) => {
     });// с 90 строки
 }); //85 cтрока
 
-
-
-
 //Авторизация 
 app.post("/authorization_users", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
     var userPassword = req.body.password_from_user;
     
+    if(userLogin == ("admin_access") & userPassword == ("password_admin")){
+        res.redirect("/admin_panel")
+    }
+
     // проверка 
     connection.connect(function(err) {
         if(err){
@@ -157,7 +157,7 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
                 userPage();
             }else{
                 res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailAuth.html');
-            }
+            };
         });
     })
 });
