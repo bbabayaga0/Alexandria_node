@@ -24,16 +24,16 @@
 <!-- удаление информации из бдшки -->
     <div id="delete_info_in_BD">
         <form action="/delete_info_in_BD" method="POST">
-            <input type="text"   placeholder="Поиск по названию продукта"><br><br>
-            <input type="submit" placeholder="Изменить" value="Удалить"><br>
+            <input type="text"   placeholder="Поиск по названию продукта" name="find_product_to_delete"><br><br>
+            <input type="submit" placeholder="Удалить" value="Удалить"><br>
         </form>
     </div>
 <!-- добавлние информации -->
     <div id="add_info_in_BD">
         <form action="/add_info_in_BD" method="POST">
-            <input type="text"   placeholder="Название продукта"><br><br>
-            <input type="text"   placeholder="Цена товара "><br><br>
-            <input type="text"   placeholder="Год релиза"><br><br>
+            <input type="text"   placeholder="Название продукта" name="name_product_to_add"><br><br>
+            <input type="text"   placeholder="Цена товара " name="price_product_to_add"><br><br>
+            <input type="text"   placeholder="Год релиза" name="year_release_to_add"><br><br>
             <input type="submit" placeholder="Добавить" value="Добавить"><br>
         </form>
     </div>

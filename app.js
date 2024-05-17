@@ -60,7 +60,7 @@ app.get("/admin_panel", (req, res) => {
 // Ниже авторизация и регистрация и всё что к этому надо
 
 
-// подключение к бдшке
+// подключение к бд
 const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -171,7 +171,7 @@ app.post("/authorization_users", encodeUrl, (req,res) =>{
         
 });
 
-// изменение информации товара в бд от админа (протестить надо)
+// изменение информации товара в бд от админа (бесконечный цицл идет, но обновление происходит)
 app.post("/edit_info_in_BD", encodeUrl, (req,res) =>{
     var find_product = req.body.find_product;
     var edit_price = req.body.edit_price;
@@ -183,16 +183,44 @@ app.post("/edit_info_in_BD", encodeUrl, (req,res) =>{
         }
 
 //проверка на наличие товара в бд
-        connection.query(`SELECT * FROM product_site WHERE product_name = '${find_product}', price = '${edit_price}', year_realise = '${edit_year}'`, function(err, result){
+        connection.query(`SELECT * FROM products_site WHERE product_name = '${find_product}'`, function(err, result){
         if(err){
             console.log(err)
-        };
-        if(Object.keys(result) > 0){
-            console.log(err)
         }else{
-            connection.query(`UPDATE product_site SET product_name = '${find_product}', price = '${edit_price}', year_realise = '${edit_year}'`);
+            connection.query(`UPDATE products_site SET product_name = '${find_product}', price = '${edit_price}', year_release = '${edit_year}'`);
         }
 
         });
     });
 });
+
+//удаление информации из БД(работает но как и в случае с изменением бесконечно грузится страница, но удаление происходит успешно)
+app.post("/delete_info_in_BD", encodeUrl, (req,res) =>{
+    var finder_to_delete = req.body.find_product_to_delete;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        }
+
+//проверка на наличие в бд
+connection.query(`DELETE FROM products_site WHERE product_name = '${finder_to_delete}'`, function(err, result){
+        if(err){
+            console.log(err)
+        }
+        });
+    });
+});
+
+//добавление товара в бд()
+app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
+    var name_product_to_upload = req.body.name_product_to_add;
+    var price_product_to_upload = req.body.price_product_to_add;
+    var year_release_to_upload = req.body.year_release_to_add;
+
+        connection.connect(`INSERT INTO products_site (product_name, price, year_release) VALUES ('${name_product_to_upload}', '${price_product_to_upload}', '${year_release_to_upload}'`, function(err, result){
+            if(err){
+                console.log(err)
+            }
+        });
+    });
