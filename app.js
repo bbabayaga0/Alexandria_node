@@ -6,6 +6,7 @@ const parseUrl = require('body-parser');
 const app = express();
 
 const mysql = require("mysql");
+const Joi = require('joi');
 const { encode } = require('punycode');
 
 
@@ -162,14 +163,6 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
 });
 
 
-//Авторизация админа
-app.post("/authorization_users", encodeUrl, (req,res) =>{
-        // забор данных с формы при авторизации 
-        var AdminLogin = req.body.login_from_user;
-        var AdminPassword = req.body.password_from_user;
-    
-        
-});
 
 // изменение информации товара в бд от админа (бесконечный цицл идет, но обновление происходит)
 app.post("/edit_info_in_BD", encodeUrl, (req,res) =>{
@@ -211,7 +204,7 @@ connection.query(`DELETE FROM products_site WHERE product_name = '${finder_to_de
     });
 });
 
-//добавление товара в бд(Выбивает сервер, не знаю почему запрос корректен)
+//добавление товара в бд(Выбивает сервер, не знаю почему, запрос корректен)
 app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
     var name_product_to_upload = req.body.name_product_to_add;
     var price_product_to_upload = req.body.price_product_to_add;
