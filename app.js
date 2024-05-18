@@ -162,8 +162,6 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
     })
 });
 
-
-
 // изменение информации товара в бд от админа (бесконечный цицл идет, но обновление происходит)
 app.post("/edit_info_in_BD", encodeUrl, (req,res) =>{
     var find_product = req.body.find_product;
@@ -216,3 +214,34 @@ app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
             }
         });
     });
+
+//авторизация админа
+app.post("/admin_accses", encodeUrl, (req, res) =>{
+    var admin_access_login = req.body.login_to_admin_accsess;
+    var admin_access_password = req.body.password_to_admin_accsess;
+     // проверка 
+    connection.connect(function(err) {
+        if(err){
+            console.log(err)
+        };
+
+        connection.query(`SELECT * FROM admin_accses WHERE login = '${admin_access_login}' AND password = '${admin_access_password}'`, function (err, result){
+            if(err){
+                res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailAuth.html');
+            };
+            function adminPage(){
+                // создание ссесии для админа и хранение его инфы
+                req.session.admin = {
+                    admin_access_login: admin_access_login,
+                    admin_access_password: admin_access_password
+                };
+                    res.redirect('/admin_panel')
+            }
+            if(Object.keys(result).length > 0){
+                adminPage();
+            }else{
+                res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\FailAuth.html');
+            };
+        });
+    })
+})
