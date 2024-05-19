@@ -57,6 +57,10 @@ app.get("/admin_panel", (req, res) => {
     res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\admin_panel.html')
 })
 
+app.get("/AdmReg", (req, res) =>{
+    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\admin_register.html')
+})
+
 // Ниже авторизация и регистрация и всё что к этому надо
 
 
@@ -128,10 +132,6 @@ app.post("/authorization_users", encodeUrl, (req, res) => {
     // забор данных с формы при авторизации 
     var userLogin = req.body.login_from_user;
     var userPassword = req.body.password_from_user;
-    
-    if(userLogin == ("admin_access") & userPassword == ("password_admin")){
-        res.redirect("/admin_panel")
-    }
 
     // проверка 
     connection.connect(function(err) {
@@ -213,7 +213,7 @@ app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
                 console.log(err)
             }
         });
-    });
+});
 
 //авторизация админа
 app.post("/admin_accses", encodeUrl, (req, res) =>{
@@ -244,4 +244,26 @@ app.post("/admin_accses", encodeUrl, (req, res) =>{
             };
         });
     })
-})
+});
+
+//обновление пароля пользователя
+app.post("/update_password", encodeUrl, (req, res) =>{
+    var upd_pass_log_finder = req.body.upd_pass_log_finder;
+    var upd_pass_new_pass = req.body.upd_pass_new_pass;
+    var upd_pass_confrim = req.body.upd_pass_confrim;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        };
+
+//Проверка на наличие пользователя
+        connection.query(`SELECT * FROM Users WHERE login = '${upd_pass_log_finder}'`, function(err, result){
+            if(err & upd_pass_new_pass !== upd_pass_confrim){
+                console.log("Ошибка при поиске или ошибка в паролях")
+            }else{
+                connection.query(`UPDATE Users SET password = '${upd_pass_new_pass}'`)
+            }
+        });
+    });
+});

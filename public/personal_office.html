@@ -29,16 +29,21 @@
     <div id="personalOFF_div_page">
         <div id="update_user_password">
             <h1>Изменения пароля</h1>
-            <input type="text" id="upd_pass" placeholder="Ваш логин"> <br><br>
-            <input type="text" id="upd_pass" placeholder="Новый пароль"> <br><br>
-            <input type="text" id="upd_pass" placeholder="Подтвердите пароль"> <br><br>
-            <input type="submit" value="изменить">    
+        <form action="/update_password" method="POST">
+            <input type="text" id="upd_pass" placeholder="Ваш логин" name="upd_pass_log_finder"> <br><br>
+            <input type="text" id="upd_pass" placeholder="Новый пароль" name="upd_pass_new_pass"> <br><br>
+            <input type="text" id="upd_pass" placeholder="Подтвердите пароль" name="upd_pass_confrim"> <br><br>
+            <input type="submit" value="изменить">             
+        </form>
         </div>
         
         <div id="user_reviews"><br>
             <h1>Ваш отзыв о сайте</h1>
+        <form action="/user_reviews_about_site" method="POST">
             <input type="text" id="reviews_users" placeholder="Отзыв о сайте" multiple> <br><br>
             <input type="submit" id="reviews_users_button">
+        </form>
+
         </div>
         
     </div>
