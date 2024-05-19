@@ -12,6 +12,7 @@ const { encode } = require('punycode');
 let encodeUrl = parseUrl.urlencoded({ extended: false });
 
 const path = require("path");
+const { resolveSoa } = require("dns");
 const port = 3000;
 
 
@@ -277,7 +278,7 @@ app.post("/update_password", encodeUrl, (req, res) =>{
     });
 });
 
-
+// отзывы о сайте от пользователей
 app.post("/user_reviews_about_site", encodeUrl, (req,res) =>{
     var name_reviewer = req.body.names_reviewers;
     var review_from_user = req.body.review;
@@ -294,6 +295,34 @@ app.post("/user_reviews_about_site", encodeUrl, (req,res) =>{
                 }else{
                     console.log("успешное добавление отзыва")
             };
+        });
+    });
+});
+
+// вывод информации в div для страницы "О компании"(не работает)
+app.get("/info_about_us", encodeUrl, (req, res) => {
+    connection.query(`SELECT * FROM about_us `, function(err, result){
+        if(err){
+            console.log("Ошибка при выводе")
+        };
+        var data = {"info": result[0].info};
+        document.getElementById('p_text_for_info').innerHTML = data;
+    });
+});
+
+//изменение информации со страницы "О компании"
+app.post("/eiac", encodeUrl, (req,res) =>{
+    var ntfp = req.body.new_text_for_page;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        };
+
+        connection.query(`UPDATE about_us SET text_info = '${ntfp}'`, function(err,result){
+            if(err){
+                console.log("что-то пошло не так на 322 строке")
+            }
         });
     });
 });
