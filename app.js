@@ -76,7 +76,7 @@ const connection = mysql.createConnection({
 app.use(session({
     secret: "dontcarewhatwrotethis",
     saveUninitialized: true,
-    cookie: {maxAge: 1000 * 60 * 60 * 12}, //12 часов
+    cookie: {maxAge: 0}, //12 часов - 1000 * 60 * 60 * 12
     resave: true
 }));
 
@@ -125,7 +125,7 @@ app.post('/register', encodeUrl, (req, res) => {
             }
         });//96 строка 
     });// с 90 строки
-}); //85 cтрока
+}); //89 cтрока
 
 //Авторизация 
 app.post("/authorization_users", encodeUrl, (req, res) => {
@@ -202,17 +202,26 @@ connection.query(`DELETE FROM products_site WHERE product_name = '${finder_to_de
     });
 });
 
-//добавление товара в бд(Выбивает сервер, не знаю почему, запрос корректен)
+//добавление товара в бд(иногда выдает ошибку но при этом данные уходят)
 app.post("/add_info_in_BD", encodeUrl, (req,res) =>{
     var name_product_to_upload = req.body.name_product_to_add;
     var price_product_to_upload = req.body.price_product_to_add;
     var year_release_to_upload = req.body.year_release_to_add;
 
-        connection.connect(`INSERT INTO products_site ('product_name', 'price', 'year_release') VALUES ('${name_product_to_upload}', '${price_product_to_upload}', '${year_release_to_upload}'`, function(err){
-            if(err){
-                console.log(err)
-            }
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        }
+        
+        var sql_add_product = `INSERT INTO products_site (product_name, price, year_release) VALUES ('${name_product_to_upload}', '${price_product_to_upload}', '${year_release_to_upload}')`;
+            connection.query(sql_add_product, function(err, result){
+                if(err){
+                    console.log(err)
+                }else{
+                    console.log("успешное добавление")
+                }
         });
+    });
 });
 
 //авторизация админа
@@ -264,6 +273,27 @@ app.post("/update_password", encodeUrl, (req, res) =>{
             }else{
                 connection.query(`UPDATE Users SET password = '${upd_pass_new_pass}'`)
             }
+        });
+    });
+});
+
+
+app.post("/user_reviews_about_site", encodeUrl, (req,res) =>{
+    var name_reviewer = req.body.names_reviewers;
+    var review_from_user = req.body.review;
+
+    connection.connect(function(err){
+        if(err){
+            console.log(err)
+        }
+
+        var sql_review_users = `INSERT INTO reviews_from_users (name_users, reviews) VALUES ('${name_reviewer}', '${review_from_user}')`;
+            connection.query(sql_review_users, function (err, result) {
+                if(err){
+                    console.log(err)
+                }else{
+                    console.log("успешное добавление отзыва")
+            };
         });
     });
 });
