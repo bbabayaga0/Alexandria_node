@@ -13,6 +13,7 @@ let encodeUrl = parseUrl.urlencoded({ extended: false });
 
 const path = require("path");
 const { resolveSoa } = require("dns");
+const { error } = require("console");
 const port = 3000;
 
 
@@ -305,13 +306,13 @@ app.get("/info_about_us", encodeUrl, (req, res) => {
         if(err){
             console.log("Ошибка при выводе")
         };
-        var data = {"info": result[0].info};
+        var data = {"info": result.info};
         document.getElementById('p_text_for_info').innerHTML = data;
     });
 });
 
 //изменение информации со страницы "О компании"
-app.post("/eiac", encodeUrl, (req,res) =>{
+app.post("/eiac", encodeUrl, (req, res) =>{
     var ntfp = req.body.new_text_for_page;
 
     connection.connect(function(err){
@@ -326,3 +327,44 @@ app.post("/eiac", encodeUrl, (req,res) =>{
         });
     });
 });
+
+// Получение данных из и последующая их обработка для отображения начиная с 332стр и ....
+
+app.get("/lifbd", encodeUrl, (req, res) =>{
+    const query = `SELECT * FROM products_site`;
+
+    //Выполнение запроса
+    connection.query(query, (error, result) =>{
+        if(!req.session.cart){
+            req.session.cart = [];
+        }
+        res.render('product', { products : result, cart : request.session.cart })
+    });
+});
+
+    app.post("/add_cart", encodeUrl, (req, res) =>{
+        const product_id = req.body.product_id;
+        const product_name = req.body.product_name;
+        const product_price = req.body.product_price;
+
+        let count = 0;
+
+        for(let i = 0; i < req.session.cart.length; i++){
+            if(req.session.cart[i].product_id === product_id){
+                req.session.cart[i].quantity += 1;
+                count++;
+            }
+        }
+// quantity - количество
+// что не забыть про parseFloat —  функция принимает строку в качестве аргумента и возвращает десятичное число (число с плавающей точкой).
+        if(count === 0){
+            const cart_data = {
+                product_id : product_id,
+                product_name : product_name,
+                product_name : parseFloat(product_price),
+                quantity : 1
+            };
+            req.session.cart.push(cart_data);
+        }
+        response.redirect("/lifbd")
+    });
