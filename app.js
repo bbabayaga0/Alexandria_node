@@ -39,7 +39,7 @@ app.get("/about", (req,res) =>{
 });
 
 app.get("/my_product", (req, res) => {
-    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\ready_sets.ejs')
+    res.sendFile('C:\\Users\\baba_yaga0\\Desktop\\Alexandria_node\\public\\ready_sets.html')
 
 });
 
