@@ -149,3 +149,46 @@ h1,p{
   height: 548px;
   border-radius: 25px;
 }
+
+
+#first_block_product{
+  border: 0.5px solid black;
+  width: 350px;
+  height: 350px;
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+#price_product{
+  justify-content: center;
+  text-align: center;
+  margin-top: 80px;
+}
+
+#about_product{
+  justify-content: center;
+  text-align: center;
+}
+
+#second_block_product{
+  border: 0.5px solid black;
+  width: 350px;
+  height: 350px;
+  margin-left: 500px;
+  margin-top: -350px;
+}
+
+#third_block_product{
+  border: 0.5px solid black;
+  width: 350px;
+  height: 350px;
+  margin-left: 1000px;
+  margin-top: -351px;
+}
+
+#photo_product{
+  width: 150px;
+  height: 150px;
+  margin-left: 120px;
+  margin-top: 10px;
+}
